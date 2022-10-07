@@ -1,4 +1,4 @@
-# appie
+# sci2022
 
 ## Project setup
 ```
