@@ -310,7 +310,7 @@ export default {
           img: blogTwo,
           date: "22 ตุลาคม 2020",
           category: "Saas & App",
-          title: "ติดตามข่าวสาร โครงการโอลิมปิก วิชาการ",
+          title: "ติดตามข่าวสาร โครงการโอลิมปิกวิชาการ",
         },
         {
           img: blogThree,
