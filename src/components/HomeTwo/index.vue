@@ -24,7 +24,7 @@
     <header-home-two
       @toggleSidebar="toggleSidebar"
       :menuItems="navs"
-      language="eng"
+      language="en"
     />
 
     <!--====== APPIE HEADER PART ENDS ======-->
@@ -327,7 +327,7 @@ export default {
 
     axios
       .get(BASE_API_URL+"&module=home&func=home_baner")
-      .then((response) => (this.data = response.data.response.home_topic_en));
+      .then((response) => (this.data = response.data.response.home_topic));
   },
   methods: {
     topToBottom() {

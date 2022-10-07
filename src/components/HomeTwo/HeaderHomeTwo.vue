@@ -23,7 +23,9 @@
           </div>
           <div class="col-lg-1 col-md-7 col-sm-6 col-6 order-2 order-sm-3">
             <div class="appie-btn-box" style="text-align: right">
-              <a class="login-btn" href="#"><i class="fal fa-globe"></i> {{language}}</a>
+              <a class="login-btn" href="#" @click="fun_language('en')"
+                ><i class="fal fa-globe"></i> {{ language }}</a
+              >
               <!-- <a class="main-btn ml-30" href="#">Get Started</a> -->
               <div class="toggle-btn ml-30 canvas_open d-lg-none d-block">
                 <i class="fa fa-bars" @click="showSidebar"></i>
@@ -59,6 +61,9 @@ export default {
     document.addEventListener("scroll", this.stickMenu);
   },
   methods: {
+    fun_language(id) {
+      sessionStorage.setItem("type_text",id);
+    },
     showSidebar(e) {
       this.$emit("toggleSidebar", e);
     },
