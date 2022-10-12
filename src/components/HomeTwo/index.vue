@@ -21,11 +21,7 @@
 
     <!--====== APPIE HEADER PART START ======-->
 
-    <header-home-two
-      @toggleSidebar="toggleSidebar"
-      :menuItems="navs"
-      language="en"
-    />
+    <header-home-two @toggleSidebar="toggleSidebar" :menuItems="navs" />
 
     <!--====== APPIE HEADER PART ENDS ======-->
 
@@ -33,10 +29,9 @@
 
     <hero-home-two
       offer_title="SUT"
-      heading="welcome to "
-      :more_heading="data"
-      description="” Strong science background,  Collaborative mindset,
-      Innovation,  Research excellence “"
+      :heading="hero_home_heading"
+      :more_heading="hero_home_more_heading"
+      :description="hero_home_description"
       :hero_img="hero_img"
     />
 
@@ -50,7 +45,7 @@
     <!--====== APPIE ABOUT PART START ======-->
 
     <about-home-two
-      title="ทำไมต้องเลือกวิทยาศาสตร์"
+      title="สำนักวิชาวิทยาศาสตร์"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     />
 
@@ -59,8 +54,7 @@
     <!--====== APPIE FEATURES 2 PART START ======-->
 
     <feature-home-two
-      title="ทำไมต้องเลือกวิทยาศาสตร์
-"
+      title="ทำไมต้องเลือกวิทยาศาสตร์"
       more_title=" "
       description="“ Strong science background, Collaborative mindset, Innovation, Research excellence ”"
     />
@@ -188,7 +182,7 @@ export default {
   data() {
     return {
       sidebar: false,
-      navs: [
+      navs_TH: [
         {
           name: "หน้าแรก",
           childrens: [
@@ -294,6 +288,112 @@ export default {
           path: "/contact",
         },
       ],
+      navs_EN: [
+        {
+          name: "Home",
+          childrens: [
+            {
+              name: "Home 1",
+              path: "/",
+            },
+            {
+              name: "Home 2",
+              path: "/home-two",
+            },
+            {
+              name: "Home 3",
+              path: "/home-three",
+            },
+            {
+              name: "Home 4",
+              path: "/home-four",
+            },
+            {
+              name: "Home 5",
+              path: "/home-five",
+            },
+            {
+              name: "Home 6",
+              path: "/home-six",
+            },
+            {
+              name: "Home 7",
+              path: "/home-seven",
+            },
+            {
+              name: "Home 8",
+              path: "/home-eight",
+            },
+            {
+              name: "Home Dark",
+              path: "/home-dark",
+            },
+            {
+              name: "Home Rtl",
+              path: "/home-rtl",
+            },
+          ],
+        },
+        {
+          name: "About us",
+          childrens: [
+            {
+              name: "About us",
+              path: "/about-us",
+            },
+            {
+              name: "About us 2",
+              path: "/about-two",
+            },
+            {
+              name: "Error",
+              path: "/error",
+            },
+          ],
+        },
+        {
+          name: "Major/Research Institute",
+          path: "/",
+        },
+        {
+          name: "Course",
+          path: "/",
+        },
+        {
+          name: "WorkGroup",
+          childrens: [
+            {
+              name: "About us",
+              path: "/about-us",
+            },
+            {
+              name: "About us 2",
+              path: "/about-two",
+            },
+            {
+              name: "Error",
+              path: "/error",
+            },
+          ],
+        },
+        {
+          name: "News",
+          childrens: [
+            {
+              name: "News",
+              path: "/news",
+            },
+            {
+              name: "Single news",
+              path: "/single-news",
+            },
+          ],
+        },
+        {
+          name: "other...",
+          path: "/contact",
+        },
+      ],
       hero_img: hero_img,
       video_bg_thumb: video_bg_thumb,
       blogOne: blogOne,
@@ -319,15 +419,39 @@ export default {
           title: "ติดตามข่าวสาร SUT Sci & Math Learning Space",
         },
       ],
-      data: null,
+      navs: [],
+      hero_home_more_heading: null,
+      hero_home_heading: null,
+      hero_home_description: null,
     };
   },
   mounted() {
+    
     document.addEventListener("scroll", this.topToBottom);
 
+    if (!sessionStorage.type_text) {
+      sessionStorage.setItem("type_text", "TH");
+    }
+
     axios
-      .get(BASE_API_URL+"&module=home&func=home_baner")
-      .then((response) => (this.data = response.data.response.home_topic));
+      .get(
+        BASE_API_URL +
+          "&module=home&func=home_baner&text=" +
+          sessionStorage.type_text
+      )
+      .then(
+        (response) => (
+          (this.hero_home_more_heading = response.data.response.home_topic),
+          (this.hero_home_heading = response.data.response.home_heading),
+          (this.hero_home_description = response.data.response.home_description)
+        )
+      );
+
+    if (sessionStorage.type_text == "TH") {
+      this.navs = this.navs_TH;
+    } else {
+      this.navs = this.navs_EN;
+    }
   },
   methods: {
     topToBottom() {

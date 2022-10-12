@@ -9,12 +9,13 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="about-thumb">
-                                    <img src="@/assets/images/about-thumb.png" alt="">
+                                    <img style="width: 553px ; hight:649px ;" src="@/assets/images/section/DSC6209.jpg" alt="" />
+                                    <!-- <img src="@/assets/images/about-thumb.png" alt=""> -->
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="appie-about-content">
-                                    <span>Marketing</span>
+                                    <span>SUT</span>
                                     <h3 class="title">{{title}}</h3>
                                     <p>{{description}}</p>
                                 </div>

@@ -23,8 +23,8 @@
           </div>
           <div class="col-lg-1 col-md-7 col-sm-6 col-6 order-2 order-sm-3">
             <div class="appie-btn-box" style="text-align: right">
-              <a class="login-btn" href="#" @click="fun_language('en')"
-                ><i class="fal fa-globe"></i> {{ language }}</a
+              <a style="cursor: pointer;" class="login-btn"  @click="func_language(type_text)"
+                ><i class="fal fa-globe"></i> {{ type_text }}</a
               >
               <!-- <a class="main-btn ml-30" href="#">Get Started</a> -->
               <div class="toggle-btn ml-30 canvas_open d-lg-none d-block">
@@ -52,17 +52,39 @@ export default {
       type: Boolean,
       default: true,
     },
-    language: {
-      type: String,
-    },
+    // language: {
+    //   type: String,
+    // },
   },
   components: { NavItems },
+  data() {
+    return { type_text: null };
+  },
   mounted() {
     document.addEventListener("scroll", this.stickMenu);
+
+    if (!sessionStorage.type_text) {
+      sessionStorage.setItem("type_text", "TH");
+      this.type_text = "EN";
+    } 
+    else {
+      if (sessionStorage.type_text == "TH") {
+        this.type_text = "EN";
+      } else {
+        this.type_text = "TH";
+      }
+     
+    }
   },
   methods: {
-    fun_language(id) {
-      sessionStorage.setItem("type_text",id);
+    func_language(id) {
+      sessionStorage.setItem("type_text", id);
+      if (sessionStorage.type_text == "TH") {
+        this.type_text = "EN";
+      } else {
+        this.type_text = "TH";
+      }
+      location.reload();
     },
     showSidebar(e) {
       this.$emit("toggleSidebar", e);

@@ -47,7 +47,16 @@
             data-wow-duration="2000ms"
             data-wow-delay="200ms"
           >
-            <img src="@/assets/images/section/DSC6209.jpg" alt="" />
+            <iframe
+              width="576"
+              height="576"
+              src="https://www.youtube.com/embed/P6hvche4HaQ"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+            <!-- <img src="@/assets/images/section/DSC6209.jpg" alt="" /> -->
           </div>
         </div>
       </div>
