@@ -13,7 +13,7 @@ export default {
   created() {
     if (sessionStorage.type_text == "TH") {
       this.navs = this.navs_TH;
-      document.title = "สำนักวิชาวิทยาศาสตร์ มหาวิทยาลัยเทคโนโลยีสุรนารี..544445 ";
+      document.title = "สำนักวิชาวิทยาศาสตร์ มหาวิทยาลัยเทคโนโลยีสุรนารี..544445 ทดสอบ ";
     } else {
       this.navs = this.navs_EN;
       document.title = "Faculty of Science, Suranaree University of Technology";
