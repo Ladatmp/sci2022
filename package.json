@@ -9,7 +9,7 @@
     "dev": "nodemon serve.js"
   },
   "dependencies": {
-    "axios": "^1.0.0",
+    "axios": "^1.1.2",
     "bootstrap": "^5.1.1",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
